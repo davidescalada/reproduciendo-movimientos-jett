@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl2dq3lkke3k3"]
+
+[ext_resource type="PackedScene" uid="uid://c6xo1871ir0df" path="res://player.tscn" id="1_gw0a4"]
+[ext_resource type="PackedScene" uid="uid://1f5bg8ff8wl6" path="res://piso.tscn" id="2_kpvxx"]
+[ext_resource type="PackedScene" uid="uid://bn5puqc5x7nc3" path="res://pared.tscn" id="3_s8del"]
+[ext_resource type="PackedScene" uid="uid://cuvxnv530j0kk" path="res://Moneda.tscn" id="4_2h0tc"]
+
+[node name="Mundo" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_gw0a4")]
+position = Vector2(566, 235)
+
+[node name="Piso" parent="." instance=ExtResource("2_kpvxx")]
+position = Vector2(585, 653)
+
+[node name="Piso2" parent="." instance=ExtResource("2_kpvxx")]
+position = Vector2(1981, 142)
+
+[node name="Piso4" parent="." instance=ExtResource("2_kpvxx")]
+position = Vector2(1731, 435)
+
+[node name="Piso3" parent="." instance=ExtResource("2_kpvxx")]
+position = Vector2(641, -10)
+
+[node name="Pared" parent="." instance=ExtResource("3_s8del")]
+position = Vector2(-22, -2)
+
+[node name="Pared2" parent="." instance=ExtResource("3_s8del")]
+position = Vector2(1164, 4)
+
+[node name="Moneda" parent="." instance=ExtResource("4_2h0tc")]
+position = Vector2(1114, 80)
+scale = Vector2(0.515625, 0.515625)

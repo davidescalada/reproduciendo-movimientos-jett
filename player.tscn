@@ -1,0 +1,128 @@
+[gd_scene load_steps=25 format=3 uid="uid://c6xo1871ir0df"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_n18vs"]
+[ext_resource type="Texture2D" uid="uid://dmd8yxj37y2xo" path="res://j1.png" id="3_xngp2"]
+[ext_resource type="Texture2D" uid="uid://djiv3f41f7qxk" path="res://r1.png" id="3_yttos"]
+[ext_resource type="Texture2D" uid="uid://63wa6hxaybfv" path="res://j2.png" id="4_kk8ip"]
+[ext_resource type="Texture2D" uid="uid://dcm3nnij3o2ui" path="res://r2.png" id="4_mnntk"]
+[ext_resource type="Texture2D" uid="uid://bwl1s63ucub0g" path="res://j3.png" id="5_8e22j"]
+[ext_resource type="Texture2D" uid="uid://dv4je5h05ldmp" path="res://r3.png" id="5_uqsnc"]
+[ext_resource type="Texture2D" uid="uid://croubb0v24wwq" path="res://r4.png" id="6_tp6pp"]
+[ext_resource type="Texture2D" uid="uid://dntojnet8jbrq" path="res://j4.png" id="6_y8qs6"]
+[ext_resource type="Texture2D" uid="uid://c7siu3l2h0ysc" path="res://r5.png" id="7_dprsm"]
+[ext_resource type="Texture2D" uid="uid://x7w3vtwqmk2s" path="res://j5.png" id="7_m62ns"]
+[ext_resource type="Texture2D" uid="uid://bvrb7cfgv4vt" path="res://r6.png" id="8_0bojp"]
+[ext_resource type="Texture2D" uid="uid://djmd378o4cynu" path="res://j6.png" id="8_khoeq"]
+[ext_resource type="Texture2D" uid="uid://cmcgmdr67of5v" path="res://r7.png" id="9_rwqdi"]
+[ext_resource type="Texture2D" uid="uid://bpxxx1fi387o5" path="res://r8.png" id="10_l0bvi"]
+[ext_resource type="Texture2D" uid="uid://l5yua1nleayk" path="res://r9.png" id="11_rra6e"]
+[ext_resource type="Texture2D" uid="uid://xdtilbcj3e1j" path="res://r10.png" id="12_1xw4w"]
+[ext_resource type="Texture2D" uid="uid://hsq3csm1ilj5" path="res://r11.png" id="13_hticy"]
+[ext_resource type="Texture2D" uid="uid://b26wwrmj7ojvp" path="res://r12.png" id="14_1dslg"]
+[ext_resource type="Texture2D" uid="uid://dih5l7l2y2xjp" path="res://r13.png" id="15_c74ko"]
+[ext_resource type="Texture2D" uid="uid://danw2dr6pgwi4" path="res://r14.png" id="16_6dk5j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53ax8"]
+size = Vector2(40, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wglt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yttos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mnntk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uqsnc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xngp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kk8ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8e22j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y8qs6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m62ns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_khoeq")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tp6pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dprsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0bojp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rwqdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l0bvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rra6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1xw4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hticy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1dslg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_c74ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6dk5j")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4u3w"]
+size = Vector2(42, 62)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_n18vs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_53ax8")
+
+[node name="DashTime" type="Timer" parent="."]
+wait_time = 0.383
+
+[node name="Animaciones" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.875, 1.875)
+sprite_frames = SubResource("SpriteFrames_wglt5")
+animation = &"Run"
+
+[node name="AreaPj" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="AreaPj"]
+shape = SubResource("RectangleShape2D_p4u3w")
+
+[connection signal="timeout" from="DashTime" to="." method="_on_dash_time_timeout"]

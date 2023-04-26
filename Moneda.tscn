@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuvxnv530j0kk"]
+
+[ext_resource type="Texture2D" uid="uid://dq2p85flhrbg" path="res://icon.svg" id="1_cj0fa"]
+[ext_resource type="Script" path="res://Moneda.gd" id="2_sh6ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8x7n"]
+size = Vector2(122, 126)
+
+[node name="Moneda" type="Sprite2D"]
+texture = ExtResource("1_cj0fa")
+script = ExtResource("2_sh6ar")
+
+[node name="AreaMoneda" type="Area2D" parent="."]
+
+[node name="CollisionMoneda" type="CollisionShape2D" parent="AreaMoneda"]
+shape = SubResource("RectangleShape2D_k8x7n")
+
+[connection signal="area_entered" from="AreaMoneda" to="." method="_on_area_moneda_area_entered"]
